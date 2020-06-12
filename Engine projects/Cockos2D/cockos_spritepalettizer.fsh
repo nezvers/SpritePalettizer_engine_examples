@@ -8,7 +8,7 @@ varying vec2 v_texCoord;
 uniform sampler2D u_texture;                //I'm assuming this is objects original texture
 
 uniform sampler2D palette;                  //Use palletes in collum with colors in rows
-uniform float palette_count = 1.0;          //Tells the shader how many palettes you have
+uniform float palette_count = 4.0;          //Tells the shader how many palettes you have. 4.0 is for example project.
 uniform float palette_index = 0.0;          //Telss the shader which palette to choose
 
 void main()
