@@ -1,3 +1,7 @@
+# GameMaker example
+
+```C
+
 /*
 	Shader port by @XorDev.
 	
@@ -32,3 +36,4 @@ void main()
     
     gl_FragColor = new_color*color.a;                      			//Set new color from palette with original alpha
 }
+```

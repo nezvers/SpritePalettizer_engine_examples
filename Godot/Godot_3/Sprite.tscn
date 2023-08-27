@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Materials/palette_swap_material.tres" type="Material" id=1]
+[ext_resource path="res://Assets/demo_character_gray_strip7.png" type="Texture" id=2]
+[ext_resource path="res://Sprite.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "animate"
+length = 0.875
+loop = true
+step = 0.125
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[node name="ExampleSprite" type="Sprite"]
+material = ExtResource( 1 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 7
+script = ExtResource( 4 )
+
+[node name="SwapTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "animate"
+anims/RESET = SubResource( 1 )
+anims/animate = SubResource( 2 )
+
+[connection signal="timeout" from="SwapTimer" to="." method="_on_Timer_timeout"]
